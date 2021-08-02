@@ -20,9 +20,12 @@ switch (lang) {
     console.log("Неверное значение");
 }
 // c
-let week = [['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье'], 
-['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']];
-console.log(lang === 'ru' ? week[0] : lang === 'en' ? week[1] : 'Неверное значение');
+let week = {
+  ru : ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье'],
+  en : ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+};
+console.log(week[lang]);
+
 // Task 2
 let namePerson = prompt("Введите значение namePerson");
 let result = namePerson === 'Артём' ? 'директор' : namePerson === 'Максим' ? 'преподаватель' : 'ученик';
