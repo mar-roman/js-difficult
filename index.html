@@ -4,9 +4,34 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>js-difficult</title>
+  <title>Random Color</title>
+  <style>
+    body{
+      background-color: #029834;
+      color: #ffffff;
+      transition: 500ms;
+    }
+    #change{
+      display: block;
+      margin: 0 auto;
+      height: 35px;
+      width: 110px;
+      background-color: #ffffff;
+      color: #029834;
+      border: none;
+      font-weight: bold;
+    }
+    #color{
+      margin-top: 40px;
+      text-align: center;
+    }
+  </style>
 </head>
 <body>
+  <div class="wrapper">
+    <h1 id="color">#029834</h1>
+    <button id="change">New Color</button>
+  </div>
   <script src="script.js"></script>
 </body>
 </html>
