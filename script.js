@@ -6,14 +6,18 @@ function DomElement(){
   this.width = ''; 
   this.bg = ''; 
   this.fontSize = '';
+  this.color = '';
+  this.position = 'absolute';
 }
 
 DomElement.prototype.create = function(){
   this.selector = prompt('Введите селектор');
   if(this.selector[0] === '.'){
     document.querySelector('body').innerHTML += '<div class="' + this.selector.slice(1) + '">' + '</div>';
+    document.querySelector(this.selector).style.cssText += 'position: ' + this.position + ';';
   } else if(this.selector[0] === '#'){
     document.querySelector('body').innerHTML += '<p id="' + this.selector.slice(1) + '">' + '</p>';
+    document.querySelector(this.selector).style.cssText += 'position: ' + this.position + ';';
   } else {
     alert('Вы ввели неверное значение!');
     this.create();
@@ -37,7 +41,7 @@ DomElement.prototype.changeHeight = function(){
   document.querySelector(tag).style.cssText += 'height: ' + this.height + ';';
 };
 
-DomElement.prototype.changeWight = function(){
+DomElement.prototype.changeWidth = function(){
   let tag = prompt('Какой тег надо изменить?');
   this.width = prompt('Укажите значение ширины');
   document.querySelector(tag).style.cssText += 'width: ' + this.width + ';';
@@ -55,10 +59,36 @@ DomElement.prototype.changeFontSize = function(){
   document.querySelector(tag).style.cssText += 'font-size: ' + this.changeFontSize + ';';
 };
 
+document.addEventListener("DOMContentLoaded", function(){
+  let element = new DomElement();
+  element.create(); //Создать див
+  element.changeHeight(); //Ввести 100px
+  element.changeWidth(); //Ввести 100px
+  element.changeBg(); //Ввести red
 
-let element = new DomElement();
-element.create();
-element.addText();
-element.changeHeight();
-element.changeFontSize();
+  let left = 0;
+  let top = 0;
+  
+  document.onkeydown = function(e) {
+    switch (e.keyCode) {
+      case 37:
+        left -= 10;
+        document.querySelector(element.selector).style.cssText += 'left: ' + left + 'px;';
+        break;
+      case 38:
+        top -= 10;
+        document.querySelector(element.selector).style.cssText += 'top: ' + left + 'px;';
+        break;
+      case 39:
+        left += 10;
+        document.querySelector(element.selector).style.cssText += 'left: ' + left + 'px;';
+        break;
+      case 40:
+        top += 10;
+        document.querySelector(element.selector).style.cssText += 'top: ' + left + 'px;';
+        break;
+    }
+  };
+});
+
 
